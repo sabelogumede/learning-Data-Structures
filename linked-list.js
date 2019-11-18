@@ -1,7 +1,6 @@
 /* 
 first we create our Constructor function from which we will create 
 our node's linked list from.
-
 */
 
 function LinkedList() {
@@ -27,11 +26,36 @@ LinkedList.prototype.addToHead = function(value) {
   this.head = newNode;
 };
 
-// create a new LinkedList with a constructor and store it "LL"
+// addToTail prototype Method,
+LinkedList.prototype.addToTail = function(value) {
+  // create new node
+  var newNode = new Node(value, null, this.tail);
+  // if list has nodes, set tail-next point to newNode
+  // else if empty, set head to newNode
+  if (this.tail) this.tail.next = newNode;
+  else this.head = newNode;
+  // add newNode to tail
+  this.tail = newNode;
+};
+
+// create a new LinkedList with a constructor and store it in "LL"
 var LL = new LinkedList();
 // using its prototype addToHead, add value for the new node
-LL.addToHead(100);
-LL.addToHead(200);
-LL.addToHead(300);
+
+// LL.addToHead(100);
+// LL.addToHead(200);
+// LL.addToHead(300);
+
+// create a new LinkedList with a constructor and store it in "LL"
+var myLL = new LinkedList();
+// using its prototype addToHead, add value for the new node
+myLL.addToTail(10);
+myLL.addToTail(15);
+myLL.addToTail(20);
+
+myLL.addToHead(100);
 
 console.log(LL);
+// console.log(myLL.tail.prev.prev);
+console.log(myLL);
+console.log(myLL.tail.prev.prev.prev);
